@@ -92,18 +92,18 @@
   programs.fish.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.brunek = {
-    isNormalUser = true;
-    description = "Michał Brunka";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
-    packages = with pkgs; [
-      brave
-      vscode
-      fish
-    #  thunderbird
-    ];
-  };
+  #users.users.brunek = {
+  #  isNormalUser = true;
+  #  description = "Michał Brunka";
+  #  extraGroups = [ "networkmanager" "wheel" ];
+  #  shell = pkgs.fish;
+  #  packages = with pkgs; [
+  #    brave
+  #    vscode
+  #    fish
+  #  #  thunderbird
+  #  ];
+  #};
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;

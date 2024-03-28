@@ -10,15 +10,15 @@
 
   sops.defaultSopsFile = ./../../hosts/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
-  # sops.age.sshKeyPaths = [ "/home/yurii/.ssh/testkey" ];
+  # sops.age.sshKeyPaths = [ "/home/brunek/.ssh/testkey" ];
   sops.age.generateKey = true;
-  sops.age.keyFile = "/home/yurii/.config/sops/age/keys.txt";
+  sops.age.keyFile = "/home/brunek/.config/sops/age/keys.txt";
 
   sops.secrets.example-key = {
-    owner = config.users.users.yurii.name;
+    owner = config.users.users.brunek.name;
   };
   sops.secrets."myservice/my_subdir/my_secret" = {
-    # owner = "yurii";
+    # owner = "brunek";
     owner = "sometestservice";
   };
 

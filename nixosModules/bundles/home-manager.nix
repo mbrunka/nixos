@@ -11,7 +11,7 @@
 in {
   options.myNixOS = {
     userName = lib.mkOption {
-      default = "yurii";
+      default = "brunek";
       description = ''
         username
       '';
@@ -67,7 +67,7 @@ in {
         isNormalUser = true;
         initialPassword = "12345";
         description = cfg.userName;
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
         extraGroups = ["libvirtd" "networkmanager" "wheel"];
       }
       // cfg.userNixosSettings;

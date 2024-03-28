@@ -7,7 +7,7 @@
   programs.rbw = {
     enable = true;
     settings = {
-      email = "yurii@goxore.com";
+      email = "michaelbrunka@gmail.com";
       # lock_timeout = 300;
       pinentry = "curses";
     };
