@@ -9,7 +9,7 @@
     settings = {
       email = "michaelbrunka@gmail.com";
       # lock_timeout = 300;
-      pinentry = "curses";
+      #pinentry = "curses";
     };
   };
 }

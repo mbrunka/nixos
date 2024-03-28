@@ -53,7 +53,7 @@ in {
           "col.active_border" = "rgba(${config.colorScheme.colors.base0E}ff) rgba(${config.colorScheme.colors.base09}ff) 60deg";
           "col.inactive_border" = "rgba(${config.colorScheme.colors.base00}ff)";
 
-          layout = "master";
+          # layout = "master";
         };
 
         monitor =
@@ -105,8 +105,8 @@ in {
         ];
 
         input = {
-          kb_layout = "us,ru,ua";
-          kb_variant = "";
+          kb_layout = "pl, uk";
+          kb_variant = "pl";
           kb_model = "";
           kb_options = "grp:alt_shift_toggle,caps:escape";
 
@@ -115,7 +115,7 @@ in {
           follow_mouse = 1;
 
           touchpad = {
-            natural_scroll = false;
+            natural_scroll = true;
           };
 
           repeat_rate = 40;
@@ -182,9 +182,9 @@ in {
 
         # Example per-device config
         # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
-        "device:logitech-g102-lightsync-gaming-mouse" = {
-          sensitivity = 0;
-        };
+        # "device:logitech-g102-lightsync-gaming-mouse" = {
+        #   sensitivity = 0;
+        # };
 
         # Example windowrule v1
         # windowrule = float, ^(kitty)$
@@ -201,16 +201,15 @@ in {
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind =
           [
-            "$mainMod, return, exec, kitty"
+            "$mainMod, T, exec, kitty"
             "$mainMod, Q, killactive,"
             "$mainMod SHIFT, M, exit,"
-            "$mainMod SHIFT, F, togglefloating,"
-            "$mainMod, F, fullscreen,"
+            "$mainMod, F, togglefloating,"
+            "$mainMod, M, fullscreen,"
             "$mainMod, G, togglegroup,"
             "$mainMod, bracketleft, changegroupactive, b"
             "$mainMod, bracketright, changegroupactive, f"
-            "$mainMod, O, exec, wofi --show drun"
-            "$mainMod, S, exec, rofi -show drun -show-icons"
+            "$mainMod, SPACE, exec, rofi -show drun -show-icons"
             "$mainMod, P, pin, active"
 
             "$mainMod, left, movefocus, l"
@@ -223,16 +222,16 @@ in {
             "$mainMod, k, movefocus, u"
             "$mainMod, j, movefocus, d"
 
-            "$mainMod SHIFT, h, movewindow, l"
-            "$mainMod SHIFT, l, movewindow, r"
-            "$mainMod SHIFT, k, movewindow, u"
-            "$mainMod SHIFT, j, movewindow, d"
+            "$mainMod CTRL, h, movewindow, l"
+            "$mainMod CTRL, l, movewindow, r"
+            "$mainMod CTRL, k, movewindow, u"
+            "$mainMod CTRL, j, movewindow, d"
 
             # Scroll through existing workspaces with mainMod + scroll
             "bind = $mainMod, mouse_down, workspace, e+1"
             "bind = $mainMod, mouse_up, workspace, e-1"
           ]
-          ++ map (n: "$mainMod SHIFT, ${toString n}, movetoworkspace, ${toString (
+          ++ map (n: "$mainMod CTRL, ${toString n}, movetoworkspace, ${toString (
             if n == 0
             then 10
             else n
@@ -244,15 +243,15 @@ in {
           )}") [1 2 3 4 5 6 7 8 9 0];
 
         binde = [
-          "$mainMod SHIFT, h, moveactive, -20 0"
-          "$mainMod SHIFT, l, moveactive, 20 0"
-          "$mainMod SHIFT, k, moveactive, 0 -20"
-          "$mainMod SHIFT, j, moveactive, 0 20"
+          "$mainMod CTRL, h, moveactive, -20 0"
+          "$mainMod CTRL, l, moveactive, 20 0"
+          "$mainMod CTRL, k, moveactive, 0 -20"
+          "$mainMod CTRL, j, moveactive, 0 20"
 
-          "$mainMod CTRL, l, resizeactive, 30 0"
-          "$mainMod CTRL, h, resizeactive, -30 0"
-          "$mainMod CTRL, k, resizeactive, 0 -10"
-          "$mainMod CTRL, j, resizeactive, 0 10"
+          "$mainMod SHIFT, l, resizeactive, 30 0"
+          "$mainMod SHIFT, h, resizeactive, -30 0"
+          "$mainMod SHIFT, k, resizeactive, 0 -10"
+          "$mainMod SHIFT, j, resizeactive, 0 10"
         ];
 
         bindm = [
@@ -293,7 +292,6 @@ in {
       networkmanagerapplet
 
       rofi-wayland
-      wofi
 
       (pkgs.waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
