@@ -33,7 +33,7 @@ in {
   };
 
   config = {
-    programs.zsh.enable = true;
+    programs.fish.enable = true;
 
     programs.hyprland.enable = cfg.sharedSettings.hyprland.enable;
 

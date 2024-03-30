@@ -17,7 +17,6 @@
 
   config = {
     myHomeManager.zathura.enable = lib.mkDefault true;
-    myHomeManager.rofi.enable = lib.mkDefault true;
     myHomeManager.kitty.enable = lib.mkDefault true;
 
     myHomeManager.gtk.enable = lib.mkDefault true;
@@ -50,13 +49,6 @@
       "video/*" = ["mpv.desktop"];
     };
 
-    programs.imv = {
-      enable = true;
-      settings = {
-        options.background = "${config.colorScheme.colors.base00}";
-      };
-    };
-
     services.mako = {
       enable = true;
       backgroundColor = "#${config.colorScheme.colors.base01}";
@@ -69,41 +61,7 @@
     };
 
     home.packages = with pkgs; [
-      feh
-      noisetorch
-      polkit
-      polkit_gnome
-      lxsession
-      pulsemixer
-      pavucontrol
-      adwaita-qt
-      pcmanfm
-      libnotify
 
-      pywal
-      neovide
-      ripdrag
-      mpv
-      sxiv
-      zathura
-
-      lm_sensors
-      upower
-
-      cm_unicode
-
-      virt-manager
-
-      wezterm
-      kitty
-
-      onlyoffice-bin
-      easyeffects
-      gegl
-    ];
-
-    myHomeManager.impermanence.directories = [
-      ".local/state/wireplumber"
     ];
   };
 }

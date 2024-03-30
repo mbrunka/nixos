@@ -35,7 +35,7 @@
   };
 
   fonts.packages = with pkgs; [
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "SpaceMono" "FiraMono"];})
     cm_unicode
     corefonts
   ];
@@ -43,12 +43,12 @@
   fonts.enableDefaultPackages = true;
   fonts.fontconfig = {
     defaultFonts = {
-      monospace = ["JetBrainsMono Nerd Font Mono"];
-      sansSerif = ["JetBrainsMono Nerd Font"];
-      serif = ["JetBrainsMono Nerd Font"];
+      monospace = ["FiraMono Nerd Font Mono"];
+      sansSerif = ["FiraMono Nerd Font"];
+      serif = ["FiraMono Nerd Font"];
     };
   };
 
   # battery
-  services.upower.enable = true;
+  # services.upower.enable = true;
 }

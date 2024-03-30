@@ -39,7 +39,6 @@ in {
 
   config = {
     myHomeManager.waybar.enable = lib.mkDefault true;
-    myHomeManager.xremap.enable = lib.mkDefault true;
 
     wayland.windowManager.hyprland = {
       # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -64,7 +63,7 @@ in {
               position = "${toString m.x}x${toString m.y}";
             in "${m.name},${
               if m.enabled
-              then "${resolution},${position},1"
+              then "${resolution},${position},${toString m.scale}"
               else "disable"
             }"
           )
@@ -105,8 +104,8 @@ in {
         ];
 
         input = {
-          kb_layout = "pl, uk";
-          kb_variant = "pl";
+          kb_layout = "pl";
+          kb_variant = "";
           kb_model = "";
           kb_options = "grp:alt_shift_toggle,caps:escape";
 
@@ -253,6 +252,9 @@ in {
           "$mainMod SHIFT, k, resizeactive, 0 -10"
           "$mainMod SHIFT, j, resizeactive, 0 10"
         ];
+	# move bindings for both vim (h, j, k, l) and arrows
+	#++ map(keys:
+	#)
 
         bindm = [
           # Move/resize windows with mainMod + LMB/RMB and dragging

@@ -10,31 +10,26 @@
   programs.git.userName = "MBrunka";
   programs.git.userEmail = "michaelbrunka@gmail.com";
 
-  #myHomeManager.impermanence.directories = [
-  #  "nixos"
-
-  #  "Documents"
-  #  "Repos"
-  #  
-  #];
-
   myHomeManager = {
     bundles.general.enable = true;
-    bundles.desktop-full.enable = true;
+    bundles.desktop.enable = true;
+    # bundles.desktop-full.enable = true;
     # bundles.gaming.enable = true;
 
-    firefox.enable = true;
+    #firefox.enable = true;
+    vscode.enable = true;
+    nixvim.enable = true;
+
     hyprland.enable = true;
-    pipewire.enable = true;
-    tenacity.enable = true;
-    gimp.enable = true;
+    rofi.enable = true;
 
     monitors = [
       {
-        name = "eDP-3";
+        name = "DP-3";
         width = 3840;
         height = 2160;
         refreshRate = 59.99700;
+	scale = 1;
         x = 0;
         y = 0;
       }
@@ -56,6 +51,7 @@
 
     packages = with pkgs; [
       #prismlauncher
+      brave
     ];
   };
 }
