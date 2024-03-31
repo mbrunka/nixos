@@ -71,7 +71,7 @@
         on-scroll = 1;
         weeks-pos = "right";
       };
-      format = "󰥔 {:%H:%M | %d.$m.y}";
+      format = "󰥔 {:%H:%M}";
       format-alt = "󰥔 {:%A, %B %d, %Y (%R)} ";
       tooltip-format = ''
         <span size='9pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>'';
@@ -184,11 +184,6 @@
     }
 
     window#waybar {
-         background-color: rgba(43, 48, 59, 0.5);
-         border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-         color: #ffffff;
-         transition-property: background-color;
-         transition-duration: .5s;
     }
 
     tooltip {

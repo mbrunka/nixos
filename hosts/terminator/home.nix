@@ -11,14 +11,12 @@
   programs.git.userEmail = "michaelbrunka@gmail.com";
 
   myHomeManager = {
-    bundles.general.enable = true;
-    bundles.desktop.enable = true;
-    # bundles.desktop-full.enable = true;
+    bundles.desktopFull.enable = true;
+    bundles.wayland.enable = true;
     # bundles.gaming.enable = true;
 
-    #firefox.enable = true;
+    firefox.enable = true;
     vscode.enable = true;
-    nixvim.enable = true;
 
     hyprland.enable = true;
     rofi.enable = true;
@@ -29,7 +27,7 @@
         width = 3840;
         height = 2160;
         refreshRate = 59.99700;
-	scale = 1;
+	      scale = 1;
         x = 0;
         y = 0;
       }

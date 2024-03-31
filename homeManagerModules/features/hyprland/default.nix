@@ -63,7 +63,7 @@ in {
               position = "${toString m.x}x${toString m.y}";
             in "${m.name},${
               if m.enabled
-              then "${resolution},${position},${toString m.scale}"
+              then "${resolution},${position},1"
               else "disable"
             }"
           )
@@ -114,7 +114,7 @@ in {
           follow_mouse = 1;
 
           touchpad = {
-            natural_scroll = true;
+            natural_scroll = false;
           };
 
           repeat_rate = 40;
@@ -181,9 +181,9 @@ in {
 
         # Example per-device config
         # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
-        # "device:logitech-g102-lightsync-gaming-mouse" = {
-        #   sensitivity = 0;
-        # };
+        #"device:logitech-g102-lightsync-gaming-mouse" = {
+        #  sensitivity = 0;
+        #};
 
         # Example windowrule v1
         # windowrule = float, ^(kitty)$
@@ -202,13 +202,14 @@ in {
           [
             "$mainMod, T, exec, kitty"
             "$mainMod, Q, killactive,"
-            "$mainMod SHIFT, M, exit,"
+            "$mainMod SHIFT, Q, exit,"
             "$mainMod, F, togglefloating,"
             "$mainMod, M, fullscreen,"
             "$mainMod, G, togglegroup,"
             "$mainMod, bracketleft, changegroupactive, b"
             "$mainMod, bracketright, changegroupactive, f"
             "$mainMod, SPACE, exec, rofi -show drun -show-icons"
+	    "$mainMod, B, exec, brave"
             "$mainMod, P, pin, active"
 
             "$mainMod, left, movefocus, l"
@@ -221,16 +222,16 @@ in {
             "$mainMod, k, movefocus, u"
             "$mainMod, j, movefocus, d"
 
-            "$mainMod CTRL, h, movewindow, l"
-            "$mainMod CTRL, l, movewindow, r"
-            "$mainMod CTRL, k, movewindow, u"
-            "$mainMod CTRL, j, movewindow, d"
+            "$mainMod SHIFT, h, movewindow, l"
+            "$mainMod SHIFT, l, movewindow, r"
+            "$mainMod SHIFT, k, movewindow, u"
+            "$mainMod SHIFT, j, movewindow, d"
 
             # Scroll through existing workspaces with mainMod + scroll
             "bind = $mainMod, mouse_down, workspace, e+1"
             "bind = $mainMod, mouse_up, workspace, e-1"
           ]
-          ++ map (n: "$mainMod CTRL, ${toString n}, movetoworkspace, ${toString (
+          ++ map (n: "$mainMod SHIFT, ${toString n}, movetoworkspace, ${toString (
             if n == 0
             then 10
             else n
@@ -242,19 +243,16 @@ in {
           )}") [1 2 3 4 5 6 7 8 9 0];
 
         binde = [
-          "$mainMod CTRL, h, moveactive, -20 0"
-          "$mainMod CTRL, l, moveactive, 20 0"
-          "$mainMod CTRL, k, moveactive, 0 -20"
-          "$mainMod CTRL, j, moveactive, 0 20"
+          "$mainMod SHIFT, h, moveactive, -20 0"
+          "$mainMod SHIFT, l, moveactive, 20 0"
+          "$mainMod SHIFT, k, moveactive, 0 -20"
+          "$mainMod SHIFT, j, moveactive, 0 20"
 
-          "$mainMod SHIFT, l, resizeactive, 30 0"
-          "$mainMod SHIFT, h, resizeactive, -30 0"
-          "$mainMod SHIFT, k, resizeactive, 0 -10"
-          "$mainMod SHIFT, j, resizeactive, 0 10"
+          "$mainMod CTRL, l, resizeactive, 30 0"
+          "$mainMod CTRL, h, resizeactive, -30 0"
+          "$mainMod CTRL, k, resizeactive, 0 -10"
+          "$mainMod CTRL, j, resizeactive, 0 10"
         ];
-	# move bindings for both vim (h, j, k, l) and arrows
-	#++ map(keys:
-	#)
 
         bindm = [
           # Move/resize windows with mainMod + LMB/RMB and dragging

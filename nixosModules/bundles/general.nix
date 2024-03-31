@@ -4,23 +4,20 @@
   ...
 }: {
   myNixOS.sddm.enable = lib.mkDefault true;
-  myNixOS.xremap-user.enable = lib.mkDefault true;
-  myNixOS.system-controller.enable = lib.mkDefault false;
-  myNixOS.virtualisation.enable = lib.mkDefault true;
 
-  # English system with Polish locale
-  time.timeZone = "Europe/Warsaw";
+  # Central European time zone
+  time.timeZone = "Europe/Bratislava";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pl_PL.UTF-8";
-    LC_IDENTIFICATION = "pl_PL.UTF-8";
-    LC_MEASUREMENT = "pl_PL.UTF-8";
-    LC_MONETARY = "pl_PL.UTF-8";
-    LC_NAME = "pl_PL.UTF-8";
-    LC_NUMERIC = "pl_PL.UTF-8";
-    LC_PAPER = "pl_PL.UTF-8";
-    LC_TELEPHONE = "pl_PL.UTF-8";
-    LC_TIME = "pl_PL.UTF-8";
+    LC_ADDRESS = "sk_SK.UTF-8";
+    LC_IDENTIFICATION = "sk_SK.UTF-8";
+    LC_MEASUREMENT = "sk_SK.UTF-8";
+    LC_MONETARY = "sk_SK.UTF-8";
+    LC_NAME = "sk_SK.UTF-8";
+    LC_NUMERIC = "sk_SK.UTF-8";
+    LC_PAPER = "sk_SK.UTF-8";
+    LC_TELEPHONE = "sk_SK.UTF-8";
+    LC_TIME = "sk_SK.UTF-8";
   };
 
   # Enable sound with pipewire.
@@ -35,7 +32,7 @@
   };
 
   fonts.packages = with pkgs; [
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "SpaceMono" "FiraMono"];})
+    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraMono"];})
     cm_unicode
     corefonts
   ];
@@ -50,5 +47,5 @@
   };
 
   # battery
-  # services.upower.enable = true;
+  #services.upower.enable = true;
 }

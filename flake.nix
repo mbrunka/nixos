@@ -1,16 +1,15 @@
 {
-  description = "Nixos config flake";
+  # ================================================================ #
+  # =                           WELCOME!                           = #
+  # ================================================================ #
+
+  description = "My NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-index-database = {
-      url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,15 +21,16 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
 
     hyprland.url = "github:hyprwm/Hyprland";
   };
@@ -44,20 +44,18 @@
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #
 
-        desktop = mkSystem ./hosts/desktop/configuration.nix;
-        # thinkpad-hd = mkSystem ./hosts/thinkpad-hd/configuration.nix;
-        # work = mkSystem ./hosts/work/configuration.nix;
+        terminator = mkSystem ./hosts/terminator/configuration.nix;
+        #work = mkSystem ./hosts/work/configuration.nix;
+        #liveiso = mkSystem ./hosts/liveiso/configuration.nix;
       };
 
       homeConfigurations = {
         # ================ Maintained home configurations ================ #
 
-        "brunek@desktop" = mkHome "x86_64-linux" ./hosts/desktop/home.nix;
-        #"brunek@thinkpad-hd" = mkHome "x86_64-linux" ./hosts/thinkpad-hd/home.nix;
+        "brunek@terminator" = mkHome "x86_64-linux" ./hosts/terminator/home.nix;
 
         # ========================= Discontinued ========================= #
-        # "brunek@work" = mkHome "x86_64-linux" ./hosts/work/home.nix;
-
+        # This one doesn't work. Left it in case I ever want to use it again
       };
 
       homeManagerModules.default = ./homeManagerModules;

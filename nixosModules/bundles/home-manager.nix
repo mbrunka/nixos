@@ -11,7 +11,7 @@
 in {
   options.myNixOS = {
     userName = lib.mkOption {
-      default = "brunek";
+      default = "yurii";
       description = ''
         username
       '';
@@ -33,7 +33,7 @@ in {
   };
 
   config = {
-    programs.fish.enable = true;
+    programs.zsh.enable = true;
 
     programs.hyprland.enable = cfg.sharedSettings.hyprland.enable;
 
@@ -67,7 +67,7 @@ in {
         isNormalUser = true;
         initialPassword = "12345";
         description = cfg.userName;
-        shell = pkgs.fish;
+        shell = pkgs.zsh;
         extraGroups = ["libvirtd" "networkmanager" "wheel"];
       }
       // cfg.userNixosSettings;

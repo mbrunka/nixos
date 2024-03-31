@@ -21,11 +21,8 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   myNixOS = {
-    bundles.general-desktop.enable = true;
+    bundles.general.enable = true;
     bundles.users.enable = true;
-    sops.enable = false;
-
-    virtualisation.enable = lib.mkDefaut true;
 
     sharedSettings.hyprland.enable = true;
 

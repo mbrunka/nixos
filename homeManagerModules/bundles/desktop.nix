@@ -16,19 +16,12 @@
   };
 
   config = {
+    myHomeManager.bundles.general.enable = lib.mkDefault true;
     myHomeManager.zathura.enable = lib.mkDefault true;
+    myHomeManager.rofi.enable = lib.mkDefault true;
     myHomeManager.kitty.enable = lib.mkDefault true;
 
     myHomeManager.gtk.enable = lib.mkDefault true;
-
-    home.file = {
-      ".local/share/rofi/rofi-bluetooth".source = "${pkgs.rofi-bluetooth}";
-
-      ".local/share/wal-telegram".source = builtins.fetchGit {
-        url = "https://github.com/guillaumeboehm/wal-telegram";
-        rev = "47e1a18f6d60d08ebaabbbac4b133a6158bacadd";
-      };
-    };
 
     qt.enable = true;
     qt.platformTheme = "gtk";
@@ -41,12 +34,19 @@
     services.udiskie.enable = true;
 
     xdg.mimeApps.defaultApplications = {
-      "text/plain" = ["neovide.desktop"];
+      "text/plain" = ["nvim.desktop"];
       "application/pdf" = ["zathura.desktop"];
       "image/*" = ["imv.desktop"];
       "video/png" = ["mpv.desktop"];
       "video/jpg" = ["mpv.desktop"];
       "video/*" = ["mpv.desktop"];
+    };
+
+    programs.imv = {
+      enable = true;
+      settings = {
+        options.background = "${config.colorScheme.colors.base00}";
+      };
     };
 
     services.mako = {
@@ -61,7 +61,30 @@
     };
 
     home.packages = with pkgs; [
+      polkit
+      polkit_gnome
+      lxsession
+      pavucontrol
 
+      adwaita-qt
+      libnotify
+
+      ripdrag
+      mpv
+      zathura
+
+      lm_sensors
+
+      cm_unicode
+
+      virt-manager
+
+      wezterm
+      kitty
+
+      onlyoffice-bin
+      easyeffects
+      gegl
     ];
   };
 }

@@ -37,10 +37,10 @@ in rec {
           type = types.int;
           default = 0;
         };
-	scale = mkOption {
-          type = types.either types.int types.float;
-	  default = 1;
-	};
+        scale = mkOption {
+          type = types.number;
+          default = 1;
+        };
         enabled = mkOption {
           type = types.bool;
           default = true;
@@ -54,4 +54,3 @@ in rec {
     default = [];
   };
 }
-
